@@ -10,8 +10,12 @@ let users = [
    { name: "Olga", city: "Kyiv", age: 18 },
    { name: "Inna", city: "Kyiv", age: 10 },
  ];   
+ 
+const newUsersArr = (arr, quantityOfSubarraysElements) =>{
+  const newArr = [];
+  while (arr.length !== 0) newArr.push(arr.splice(0, quantityOfSubarraysElements));
+  return newArr;
+}
+// Значения переменной quantityOfSubarraysElements меньше или равно 0 лучше не вводить (происходит зацикливание). Думаю, в рамках интеграции кода для пагинации, в написании доп. проверки нет необходимости.
 
-let newUsers = [];
-const quantityOfSubarraysElements = 3; // Значения переменной quantityOfSubarraysElements меньше или равно 0 лучше не вводить (происходит зацикливание). Думаю в рамках интеграции кода для пагинации, в написании доп. проверки нет необходимости. 
-while (users.length !== 0) newUsers.push(users.splice(0, quantityOfSubarraysElements));
-console.log(newUsers);
+console.log(newUsersArr(users, 3));
